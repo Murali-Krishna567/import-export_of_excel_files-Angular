@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+      </head>
+      
+ <body style="text-align: center;" >
+    <h1 style="text-align: center;">ZILA TECHNOLOGIES</h1><br><br>
+    <div style="background-color: brown;padding-top: 5%;">
+    <button class="btn btn-info" style="margin-bottom: 60px;"><input style="margin-right: -30%;"  type="file" (change)="onFileChange($event)" multiple="false"  /></button>
+<button *ngIf="flag1"  class="btn btn-success" (click)="export()" style="margin-left: 400dp;margin-bottom: 60px;">DOWNLOAD</button>
+<button style="margin-left: 300px; margin-bottom: 60px;" class="btn btn-warning" (click)="fetch()">API DATA</button>
+    </div>
+<hr/>
+<div *ngIf='flag'>
+<table>
+        <tbody>
+        <tr>
+            <th>SALES</th>
+            <th>total_sale_24_hour</th>
+            <th>user_last_24_hour</th>
+            <th>users</th>
+        </tr>
+        <tr *ngFor="let val of zila | async ">
+                <td>{{val.sales}}</td>
+                <td>{{val.total_sale_24_hour}}</td>
+                <td>{{val.user_last_24_hour}}</td>
+                <td>{{val.users}}</td>
+        </tr>
+    </tbody>
+</table> 
+</div>
+    <div *ngIf="flag1">
+    <table>
+        <tbody>
+            <tr *ngFor='let row of data'>
+                <td *ngFor='let val of row'>
+                    {{val}}
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+
+</html>
